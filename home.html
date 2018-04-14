@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MOSTFA</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./css/home.css">
+</head>
+
+<body>
+    <nav id="nav" data-bind="css:{open:is_open(), close:!is_open()}">
+        <div class="citiesList">
+            <h3> Cairo Neighborhood Map</h3>
+            <div class="filter">
+                <input type="text" data-bind="textInput:searchText" id="searchText" placeholder="Location Here"><span>Filter</span>
+                <ul data-bind="foreach:currentList">
+                    <li data-bind="click:$parent.changeCurrentLoc, text:title, css:{selected: title==$parent.currentLoc().title}"></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <main>
+        <div class="head">
+            <i class="material-icons" id="toggle-nav" data-bind="click:chang_state">menu</i>
+        </div>
+        <div id="map">
+        </div>
+    </main>
+    <script src="./javascript/jquery.js"></script>
+    <script src="./javascript/knockout.js"></script>
+    <script src="./javascript/home.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh8jsdlTrxxq2Caj36pKHJ2Yv1MlJz_Bc&v=3&callback=initMap" async defer onerror="handleLoadMapFailure()"></script>
+
+</body>
+
+</html>
